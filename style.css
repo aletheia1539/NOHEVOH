@@ -1,0 +1,95 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background-color: #0c0a24; /* Deeper cosmic void */
+    color: #E5E7EB; 
+}
+.ui-panel {
+    position: absolute;
+    background-color: rgba(25, 20, 60, 0.88); 
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+    color: #D1D5DB; 
+    border: 1px solid rgba(100, 100, 220, 0.4);
+    font-size: 0.85em;
+    z-index: 10;
+}
+#infoPanel { top: 10px; left: 10px; max-width: 280px; max-height: calc(100vh - 70px); overflow-y: auto;}
+#outputPanel { bottom: 10px; left: 10px; max-width: 350px; }
+#atolControlsPanel { top: 10px; right: 10px; max-width: 250px; }
+
+select, button, input[type="color"] {
+    background-color: #4a3f80; 
+    color: #E5E7EB;
+    border: 1px solid #6a5acd; 
+    padding: 7px 10px;
+    border-radius: 6px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: calc(100% - 0px); 
+    box-sizing: border-box;
+}
+input[type="color"] { padding: 3px; height: 36px; }
+select:hover, button:hover, input[type="color"]:hover {
+    background-color: #5c4db0; 
+}
+label { display: block; margin-top: 8px; font-weight: 600; color: #b0a8f0; }
+h2 { color: #d8cfff; border-bottom: 1px solid #6a5acd; padding-bottom: 4px; margin-top:0; font-size: 1.1em; }
+.metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
+.metric-item { background-color: #2a2050; padding: 7px; border-radius: 4px; }
+.metric-item strong { color: #a79bff; } 
+#titleHeader {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #E0D8FF; 
+    text-shadow: 0 0 10px #FFD700, 0 0 7px #FF69B4, 0 0 4px #8A2BE2, 0 0 15px #C4B5FD;
+    z-index: 1; /* Lowered z-index so joystick can be on top if needed */
+    pointer-events: none;
+}
+canvas { display: block; }
+.tooltip {
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    pointer-events: none;
+    display: none; 
+}
+#joystickBase {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(74, 63, 128, 0.5); /* #4a3f80 with alpha */
+    border-radius: 50%;
+    border: 2px solid rgba(106, 90, 205, 0.7); /* #6a5acd with alpha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20; /* Ensure joystick is above other elements if necessary */
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
+}
+#joystickKnob {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(92, 77, 176, 0.8); /* #5c4db0 with alpha */
+    border-radius: 50%;
+    border: 2px solid rgba(167, 155, 255, 0.9); /* #a79bff with alpha */
+    position: absolute; /* Will be positioned by JS relative to base */
+    cursor: grab;
+}
+#joystickKnob:active {
+    cursor: grabbing;
+  }
