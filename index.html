@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Jaze Buddha Initiative - ATOL & Songlines Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="titleHeader">Jaze Buddha Initiative - ATOL & Songlines Simulator</div>
+
+    <div id="infoPanel" class="ui-panel">
+        <h2>Logic Sandbox</h2>
+        <label for="tritAState">Input Trit A:</label>
+        <select id="tritAState">
+            <option value="1">1 (+)</option><option value="0" selected>0 (S)</option><option value="-1">-1 (-)</option>
+        </select>
+        <label for="tritBState">Input Trit B:</label>
+        <select id="tritBState">
+            <option value="1">1 (+)</option><option value="0" selected>0 (S)</option><option value="-1">-1 (-)</option>
+        </select>
+        <label for="logicGate">Logic Gate:</label>
+        <select id="logicGate">
+            <optgroup label="Binary Emulation"><option value="B_AND">B_AND</option><option value="B_OR">B_OR</option><option value="B_NOT_A">B_NOT_A</option></optgroup>
+            <optgroup label="Ternary Logic"><option value="T_AND">T_AND</option><option value="T_OR">T_OR</option><option value="T_NOT_A">T_NOT_A</option><option value="T_XOR">T_XOR</option><option value="T_CONSENSUS">T_CONSENSUS</option><option value="T_SUM">T_SUM</option></optgroup>
+        </select>
+        <button id="applyGate" class="mt-3">Apply Logic</button>
+    </div>
+
+    <div id="outputPanel" class="ui-panel">
+        <h2>System Metrics</h2>
+        <div class="metrics-grid">
+            <div class="metric-item"><strong>In A:</strong> <span id="outInputA">0</span></div>
+            <div class="metric-item"><strong>In B:</strong> <span id="outInputB">0</span></div>
+            <div class="metric-item"><strong>Gate:</strong> <span id="outGateType">N/A</span></div>
+            <div class="metric-item"><strong>Ternary:</strong> <span id="outTernaryResult">N/A</span></div>
+            <div class="metric-item col-span-2"><strong>Binary Emul:</strong> <span id="outBinaryResult">N/A</span></div>
+        </div>
+        <div id="entanglementStatus" class="mt-1 text-xs text-yellow-300"></div>
+    </div>
+
+    <div id="atolControlsPanel" class="ui-panel">
+        <h2>ATOL Controls</h2>
+        <p class="text-xs mb-1">Keys: W/S (Pitch), A/D (Yaw), Q/E (Altitude), Arrow Keys (Move/Turn Key)</p>
+        <button id="igniteATOL" class="mb-1">Ignite ATOL Core</button>
+        <button id="toggleSelfieCam" class="mb-1">Toggle Selfie Cam</button>
+        <label for="auraColorPicker">Vitruvian Aura / ATOL Accent:</label>
+        <input type="color" id="auraColorPicker" value="#FFD700">
+        <div id="atolStatus" class="mt-1 text-xs text-green-400">ATOL Systems Nominal.</div>
+    </div>
+    <div id="tooltip" class="tooltip"></div>
+    <div id="joystickBase">
+        <div id="joystickKnob"></div>
+    </div>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
